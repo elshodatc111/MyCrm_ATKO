@@ -23,7 +23,7 @@
                 </div><hr class="p-0 m-0">
     
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-lg-6">
                         <h1 class="card-title">Kunlik tashriflar</h1>
                         <canvas id="kunlik_tashrif" style="max-height: 400px;"></canvas>
                         <script>
@@ -63,7 +63,7 @@
                             });
                         </script>
                     </div>
-                    <div class="col-6">
+                    <div class="col-lg-6">
                         <h1 class="card-title">Tashriflar(oxirgi 7kun)</h1>
                         <canvas id="crm_tashrif" style="max-height: 400px;"></canvas>
                         <script>

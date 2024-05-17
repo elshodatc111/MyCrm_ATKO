@@ -14,7 +14,7 @@
     </nav>
 </div> 
     <div class="row">
-      <div class="col-6">
+      <div class="col-lg-6">
         <div class="card">
           <div class="card-body">
             <h1 class="card-title">Oylik tashriflar</h1>
@@ -60,7 +60,7 @@
           </div>
         </div>
       </div>
-        <div class="col-6">
+        <div class="col-lg-6">
             <div class="card">
                 <div class="card-body">
                     <h1 class="card-title">Tashriflar(oxirgi 45 kun)</h1>

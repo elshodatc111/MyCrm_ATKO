@@ -22,8 +22,8 @@
   <div class="card info-card sales-card">
     <div class="card-body text-center">
       <div class="row">
-        <div class="col-9"><h5 class="card-title">Filiallar</span></h5></div>
-        <div class="col-3"><button class="btn btn-success text-white w-100 mt-3" data-bs-toggle="modal" data-bs-target="#yangi_filial"> <i class="bi bi-patch-plus"></i> Yangi Filial</button></div>
+        <div class="col-6"><h5 class="card-title">Filiallar</span></h5></div>
+        <div class="col-6"><button class="btn btn-success text-white w-100 mt-3" data-bs-toggle="modal" data-bs-target="#yangi_filial"> <i class="bi bi-patch-plus"></i> Yangi Filial</button></div>
 
         <div class="modal fade" id="yangi_filial" tabindex="-1">
           <div class="modal-dialog">
@@ -85,7 +85,7 @@
             </tr>
             @empty
             <tr>
-              <td colspan=6 class="text-center">Filiallar mavjud emas</td>
+              <td colspan=8 class="text-center">Filiallar mavjud emas</td>
             </tr>
             @endforelse
             <tr>
