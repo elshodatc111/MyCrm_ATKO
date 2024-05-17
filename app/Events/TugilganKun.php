@@ -20,7 +20,6 @@ class TugilganKun{
     public $filial;
     public $type;
     public function __construct($id){
-        
         $this->name = User::find($id)->name;
         $this->phone = "+998".str_replace(" ","", User::find($id)->phone );
         $this->filial = Filial::find(User::find($id)->filial_id)->filial_name;

@@ -14,7 +14,6 @@ class SendMessegeTkun{
     public function __construct(){}
 
     public function handle(TugilganKun $event){
-        Log::info('SMS Yuborildi Tug\'ilgan kun');
         if($event->type=='on'){
             $Text = "Hurmatli ".$event->name."! Sizni tug'ilgan kuningiz bilan chin yurakdan tabriklaymiz! Ushbu quvonchli kunda va yilning har bir kunida sizga omad va sog'lik, istaklaringizni amalga oshirish va ko'plab ijobiy his-tuyg'ularni tilaymiz. \n Hurmat bilan ".$event->filial." o'quv markazi jamoasi.";
             $eskiz_email = env('ESKIZ_UZ_EMAIL');

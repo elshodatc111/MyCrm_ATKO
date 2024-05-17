@@ -36,7 +36,7 @@
                 <li class="nav-item flex-fill" role="presentation">
                     <button class="nav-link w-100" id="contact-tab" data-bs-toggle="tab" 
                     data-bs-target="#contact-justified" type="button" role="tab" 
-                    aria-controls="contact" aria-selected="false"><i class="bi bi-people"></i> Guruh talabalari</button>
+                    aria-controls="contact" aria-selected="false"><i class="bi bi-clipboard-check"></i> Davomat</button>
                 </li>
             </ul>
             <div class="tab-content pt-2" id="myTabjustifiedContent">
@@ -101,16 +101,16 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-3 col-6 pt-lg-0 pt-1">
+                        <div class="col-lg-3 pt-lg-0 pt-1">
                             <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#esltama" style="font-size:14px;"><i class="bi bi-clock"></i> Eslatma Saqlash</button>
                         </div>
-                        <div class="col-lg-3 col-6 pt-lg-0 pt-1">
+                        <div class="col-lg-3 pt-lg-0 pt-1">
                             <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#alluserSendMessege" style="font-size:14px;"><i class="bi bi-messenger"></i> SMS yuborish</button>
                         </div>
-                        <div class="col-lg-3 col-6 pt-lg-0 pt-1">
+                        <div class="col-lg-3 pt-lg-0 pt-1">
                             <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#GuruhDebetUserSendMessege" style="font-size:14px;"><i class="bi bi-messenger"></i> Qarzdorlarga SMS</button>
                         </div>
-                        <div class="col-lg-3 col-6 pt-lg-0 pt-1">
+                        <div class="col-lg-3 pt-lg-0 pt-1">
                             @if(Auth::user()->type!="Operator")
                             <button class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#GuruhDeleteUser" style="font-size:14px;"><i class="bi bi-trash"></i> Talaba o'chirish</button>
                             @endif
@@ -353,41 +353,40 @@
                 </div>
                 <div class="tab-pane fade" id="contact-justified" role="tabpanel" aria-labelledby="contact-tab">
                     <div class="table-responsive">
-                        <h5 class="card-title pt-0 my-0 pb-1">Guruh talabalari</h5>
-                        <table class="table text-center table-bordered table-hover" style="font-size:12px;">
+                        <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th class="text-center">#</th>
-                                    <th class="text-center">Talaba</th>
-                                    <th class="text-center">Guruhga qo'shildi</th>
-                                    <th class="text-center">Meneger</th>
-                                    <th class="text-center">Izoh</th>
-                                    <th class="text-center">Guruhdan o'chirildi</th>
-                                    <th class="text-center">Meneger</th>
-                                    <th class="text-center">Izoh</th>
-                                    <th class="text-center">Balans</th>
-                                    <th class="text-center">Status</th>
+                                    <th  class="bg-primary text-white">#</th>
+                                    <th  class="bg-primary text-white">Talabalar</th>
+                                    @foreach($Guruhw['kunlar'] as $item)
+                                    <td  class="bg-primary text-white" style="font-size:10px;width:50px">{{ $item['dates'] }}</td>
+                                    @endforeach
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse($Talabalar as $item)
+                                @foreach($Davomat as $item)
                                 <tr>
-                                    <td>{{ $loop->index+1 }}</td>
-                                    <td style="text-align:left"><a href="{{ route('StudentShow',$item['user_id']) }}">{{ $item['User'] }}</a></td>
-                                    <td>{{ $item['created_at'] }}</td>
-                                    <td>{{ $item['admin_id_start'] }}</td>
-                                    <td>{{ $item['commit_start'] }}</td>
-                                    <td>{{ $item['updated_at'] }}</td>
-                                    <td>{{ $item['admin_id_end'] }}</td>
-                                    <td>{{ $item['commit_end'] }}</td>
-                                    <td>{{ $item['balans'] }}</td>
-                                    <td>{{ $item['status'] }}</td>
+                                    <th>{{ $loop->index+1 }}</th>
+                                    <th style="text-align:left;">{{ $item['name'] }}</th>
+                                    @foreach($item['status'] as $value)
+                                        @if($value=='new')
+                                            <td class="bg-secondary text-white text-center" title="Dars kutilmoqda" style="cursor:pointer"><i class="bi bi-clock"></i></td>
+                                        @elseif($value=='DarsKuni')
+                                            <td class="bg-info text-white text-center" title="Bugun dars kuni" style="cursor:pointer"><i class="bi bi-clipboard-x"></i></td>
+                                        @elseif($value=='DarsKuniTrue')
+                                            <td class="bg-success text-white text-center" title="Darsga qatnashdi" style="cursor:pointer"><i class="bi bi-clipboard2-check"></i></td>
+                                        @elseif($value=='DarsKuniFalse')
+                                            <td class="bg-warning text-white text-center" title="Darsga qatnashmadi" style="cursor:pointer"><i class="bi bi-clipboard-minus"></i></td>
+                                        @elseif($value=='DavomatBor')
+                                            <td class="bg-success text-white text-center" title="Darsga qatnashdi" style="cursor:pointer"><i class="bi bi-clipboard2-check"></i></td>
+                                        @elseif($value=='DavomatYoq')
+                                            <td class="bg-warning text-white text-center" title="Darsga qatnashmadi" style="cursor:pointer"><i class="bi bi-clipboard-minus"></i></td>
+                                        @elseif($value=='DarsOtilmadi')
+                                            <td class="bg-danger text-white text-center" title="Davomat olinmadi" style="cursor:pointer"><i class="bi bi-dot"></i></td>
+                                        @endif
+                                    @endforeach
                                 </tr>
-                                @empty
-                                <tr>
-                                    <td colspan=10 class="text-center">Guruh talabalari mavjud emas.</td>
-                                </tr>
-                                @endforelse
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -399,41 +398,41 @@
     <div class="card">
         <div class="card-body text-center">
             <div class="table-responsive">
-                <h5 class="card-title pb-1"><i class="bi bi-clipboard-check"></i> Davomat</h5>
-                <table class="table table-bordered">
+                <h5 class="card-title pb-1"><i class="bi bi-people"></i> Guruh talabalari</h5>
+                <table class="table text-center table-bordered table-hover" style="font-size:12px;">
                     <thead>
                         <tr>
-                            <th  class="bg-primary text-white">#</th>
-                            <th  class="bg-primary text-white">Talabalar</th>
-                            @foreach($Guruhw['kunlar'] as $item)
-                            <td  class="bg-primary text-white" style="font-size:10px;width:50px">{{ $item['dates'] }}</td>
-                            @endforeach
+                            <th class="text-center">#</th>
+                            <th class="text-center">Talaba</th>
+                            <th class="text-center">Guruhga qo'shildi</th>
+                            <th class="text-center">Meneger</th>
+                            <th class="text-center">Izoh</th>
+                            <th class="text-center">Guruhdan o'chirildi</th>
+                            <th class="text-center">Meneger</th>
+                            <th class="text-center">Izoh</th>
+                            <th class="text-center">Balans</th>
+                            <th class="text-center">Status</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($Davomat as $item)
+                        @forelse($Talabalar as $item)
                         <tr>
-                            <th>{{ $loop->index+1 }}</th>
-                            <th style="text-align:left;">{{ $item['name'] }}</th>
-                            @foreach($item['status'] as $value)
-                                @if($value=='new')
-                                    <td class="bg-secondary text-white text-center" title="Dars kutilmoqda" style="cursor:pointer"><i class="bi bi-clock"></i></td>
-                                @elseif($value=='DarsKuni')
-                                    <td class="bg-info text-white text-center" title="Bugun dars kuni" style="cursor:pointer"><i class="bi bi-clipboard-x"></i></td>
-                                @elseif($value=='DarsKuniTrue')
-                                    <td class="bg-success text-white text-center" title="Darsga qatnashdi" style="cursor:pointer"><i class="bi bi-clipboard2-check"></i></td>
-                                @elseif($value=='DarsKuniFalse')
-                                    <td class="bg-warning text-white text-center" title="Darsga qatnashmadi" style="cursor:pointer"><i class="bi bi-clipboard-minus"></i></td>
-                                @elseif($value=='DavomatBor')
-                                    <td class="bg-success text-white text-center" title="Darsga qatnashdi" style="cursor:pointer"><i class="bi bi-clipboard2-check"></i></td>
-                                @elseif($value=='DavomatYoq')
-                                    <td class="bg-warning text-white text-center" title="Darsga qatnashmadi" style="cursor:pointer"><i class="bi bi-clipboard-minus"></i></td>
-                                @elseif($value=='DarsOtilmadi')
-                                    <td class="bg-danger text-white text-center" title="Davomat olinmadi" style="cursor:pointer"><i class="bi bi-dot"></i></td>
-                                @endif
-                            @endforeach
+                            <td>{{ $loop->index+1 }}</td>
+                            <td style="text-align:left"><a href="{{ route('StudentShow',$item['user_id']) }}">{{ $item['User'] }}</a></td>
+                            <td>{{ $item['created_at'] }}</td>
+                            <td>{{ $item['admin_id_start'] }}</td>
+                            <td>{{ $item['commit_start'] }}</td>
+                            <td>{{ $item['updated_at'] }}</td>
+                            <td>{{ $item['admin_id_end'] }}</td>
+                            <td>{{ $item['commit_end'] }}</td>
+                            <td>{{ $item['balans'] }}</td>
+                            <td>{{ $item['status'] }}</td>
                         </tr>
-                        @endforeach
+                        @empty
+                        <tr>
+                            <td colspan=10 class="text-center">Guruh talabalari mavjud emas.</td>
+                        </tr>
+                        @endforelse
                     </tbody>
                 </table>
             </div>

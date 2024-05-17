@@ -39,25 +39,6 @@
     <div class="col-lg-3">
         <div class="card mb-2">
             <div class="card-body text-center" style="min-height:175px;">
-                <div class="table-responsive">
-                    <h5 class="card-title m-0 pb-2"><i class="bi bi-bag-check"></i> Ish haqi to'lovi uchun</h5>
-                    <ul class="list-group">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <b class="card-title p-0 m-0" style="font-size:14px;"><i class="bi bi-cash"></i> Naqt:</b>
-                            <span class="badge bg-primary rounded-pill">{{ $IshHaq['naqt'] }}</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <b class="card-title p-0 m-0" style="font-size:14px;"><i class="bi bi-credit-card-2-back"></i> Plastik:</b>
-                            <span class="badge bg-primary rounded-pill">{{ $IshHaq['plastik'] }}</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3">
-        <div class="card mb-2">
-            <div class="card-body text-center" style="min-height:175px;">
                 <h5 class="card-title mb-0 pb-2"><i class="bi bi-capslock"></i> Chiqim kutilmoqda</h5>
                 <ul class="list-group">
                     <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -85,6 +66,25 @@
                         <li class="list-group-item d-flex justify-content-between align-items-center">
                             <b class="card-title p-0 m-0" style="font-size:14px;"><i class="bi bi-credit-card-2-back"></i> Plastik:</b>
                             <span class="badge bg-info rounded-pill">{{ $Kassa['XarajatPlastik'] }}</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="card mb-2">
+            <div class="card-body text-center" style="min-height:175px;">
+                <div class="table-responsive">
+                    <h5 class="card-title m-0 pb-2"><i class="bi bi-bag-check"></i> Ish haqi to'lovi uchun</h5>
+                    <ul class="list-group">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <b class="card-title p-0 m-0" style="font-size:14px;"><i class="bi bi-cash"></i> Naqt:</b>
+                            <span class="badge bg-primary rounded-pill">{{ $IshHaq['naqt'] }}</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <b class="card-title p-0 m-0" style="font-size:14px;"><i class="bi bi-credit-card-2-back"></i> Plastik:</b>
+                            <span class="badge bg-primary rounded-pill">{{ $IshHaq['plastik'] }}</span>
                         </li>
                     </ul>
                 </div>
