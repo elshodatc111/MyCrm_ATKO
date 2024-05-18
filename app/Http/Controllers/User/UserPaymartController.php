@@ -20,7 +20,7 @@ class UserPaymartController extends Controller{
             $Tulov[$key]['summa'] = number_format(($item->summa), 0, '.', ' ');
             $Tulov[$key]['type'] = $item->type;
             $Tulov[$key]['created_at'] = $item->created_at;
-        }
+        } 
         return view('User.tulovlar',compact('Tulov'));
     }
 

@@ -210,8 +210,8 @@ Route::controller(UserGuruhController::class)->group(function () {
 
 Route::controller(UserPaymartController::class)->group(function () {
     Route::get('/User/tolovlar', 'Tolovlar')->name('Tolovlar');
-    Route::get('/User/tolov/{summa}', 'pay')->name('Tolov');
-    Route::post('/User/tolov', 'pay2')->name('Tolov');
+    Route::post('/User/tolov', 'pay2')->name('TolovPost');
+    Route::get('/User/tolovlar/{summa}', 'pay')->name('Tolov');
 });
 
 Route::controller(UserContactController::class)->group(function () {
