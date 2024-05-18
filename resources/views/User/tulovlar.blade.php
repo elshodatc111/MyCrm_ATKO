@@ -14,6 +14,7 @@
 
 
     <div class="row">
+        <!--
         <div class="col-lg-4">
             <div class="card">
                 <div class="card-body">
@@ -26,6 +27,7 @@
                 </div>
             </div>
         </div>
+        -->
         @forelse($Tulov as $item)
         <div class="col-lg-4">
             <div class="card">

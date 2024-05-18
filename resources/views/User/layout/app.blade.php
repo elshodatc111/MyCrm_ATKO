@@ -103,9 +103,11 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('Tolovlar') }}"><i class="bi bi-coin"></i><span>To'lovlar</span></a>
             </li>
+            <!--
             <li class="nav-item">
                 <a class="nav-link collapsed" href="https://atko.uz/"><i class="bi bi-chat-dots"></i><span>Online kurslar</span></a>
             </li>
+            -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('Contact') }}"><i class="bi bi-chat-dots"></i><span>Bog'lanish</span></a>
             </li>
