@@ -39,10 +39,10 @@
                     <td>{{ $loop->index+1 }}</td>
                     <td>{{ $item['filial'] }}</td>
                     <td>{{ $item['user'] }}</td>
-                    <td>{{ $item['admin'] }}</td>
-                    <td>{{ $item['about'] }}</td>
                     <td>{{ $item['summa'] }}</td>
                     <td>{{ $item['type'] }}</td>
+                    <td>{{ $item['about'] }}</td>
+                    <td>{{ $item['admin'] }}</td>
                     <td>{{ $item['created_at'] }}</td>
                 </tr>
             @endforeach
