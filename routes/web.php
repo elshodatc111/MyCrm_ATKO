@@ -10,6 +10,7 @@ use App\Http\Controllers\SuperAdmin\SuperMoliyaController;
 use App\Http\Controllers\SuperAdmin\SuperReportController;
 use App\Http\Controllers\SuperAdmin\SuperStatistikaController;
 use App\Http\Controllers\SuperAdmin\TestController;
+use App\Http\Controllers\SuperAdmin\SMSController;
 use App\Http\Controllers\SuperAdmin\SuperElonController;
 use App\Http\Controllers\SuperAdmin\SuperAdminTecherController;
 use App\Http\Controllers\SuperAdmin\ReportControlle;
@@ -37,6 +38,12 @@ Route::controller(SettingController::class)->group(function () {
     Route::get('/setting', 'index')->name('setting');
     Route::post('/setting', 'update')->name('settingupdate');
     Route::post('/sms/plus', 'smsplus')->name('settingsmsplus');
+});
+
+Route::controller(SMSController::class)->group(function () {
+    Route::get('/sms', 'index')->name('sms');
+    Route::post('/show', 'show')->name('sms_show');
+    Route::post('/sms/create', 'send')->name('sms_send');
 });
 
 Route::get('/Superadmin/index', [SuperAdminController::class, 'index'])->name('SuperAdmin');

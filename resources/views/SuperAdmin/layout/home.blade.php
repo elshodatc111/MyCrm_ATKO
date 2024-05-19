@@ -97,11 +97,9 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{ route('hisobot') }}"><i class="bi bi-file-earmark-medical"></i><span>Hisobot</span></a>
       </li>
-      <!--
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#"><i class="bi bi-envelope-arrow-up-fill"></i><span>SMS</span></a>
+        <a class="nav-link collapsed" href="{{ route('sms') }}"><i class="bi bi-envelope-arrow-up-fill"></i><span>SMS</span></a>
       </li>
-      -->
       @if(Auth::user()->email=='elshodatc1116')
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{ route('setting') }}"><i class="bi bi-gear"></i><span>Settings</span></a>
