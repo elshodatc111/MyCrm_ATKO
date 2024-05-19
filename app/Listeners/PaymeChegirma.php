@@ -5,7 +5,7 @@ namespace App\Listeners;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use App\Events\Payme;
-use App\Events\SmsCounter;
+use App\Models\SmsCounter;
 use App\Models\User;
 use App\Models\SmsCentar;
 use App\Models\Guruh;
@@ -30,13 +30,14 @@ class PaymeChegirma{
         $chegirma = 0;
         $guruh_Name = "NULL";
         $GuruhUser = GuruhUser::where('user_id',$user_id)->where('status','true')->get();
-        $ChegirmaDay = ChegirmaDay::where('filial_id',request()->cookie('filial_id'))->first()->days;
+        $ChegirmaDay = ChegirmaDay::where('filial_id',$event->filial_id)->first()->days;
         $ChegirmaDays = date("Y-m-d",strtotime('-'.$ChegirmaDay.' day',strtotime(date('Y-m-d'))));
         if($GuruhUser){
             foreach ($GuruhUser as $key => $value) {
-                $Guruh = Guruh::where('id',$value->guruh_id)->where('guruh_start','>=',$ChegirmaDays)->get();
+                $Guruh = Guruh::where('id',$value->guruh_id)
+                    ->where('guruh_start','>=',$ChegirmaDays)->first();
                 $Tulov = count(Tulov::where('user_id',$user_id)
-                    ->where('guruh_id',$Guruh->id)
+                    ->where('guruh_id',$value->guruh_id)
                     ->where('type','Chegirma')->get());
                 if($Tulov==0){
                     $tulov = $Guruh->guruh_price-$Guruh->guruh_chegirma;
@@ -48,6 +49,7 @@ class PaymeChegirma{
                 }
             }
         }
+
         $Users = User::where('id',$user_id)->first();
         $Balans1=$Users->balans;
         $Hisob1 = $Balans1."+".$summa."=".$Users->balans+$summa;
@@ -106,12 +108,11 @@ class PaymeChegirma{
         $Name = $Users->name;
         $Filial = Filial::where('id',$Users->filial_id)->first()->filial_name;
         if($chegirma!=0){
-            $Text = "Hurmatli ".$Name." ".$Filial." o'quv markazi kurslar uchun ".$summa." so'm to'lov qabul qilindi va siz ".$chegirma." so'mlik chegirma oldingiz.";    
+            $Text = "Hurmatli ".$Name." ".env('CRM_NAME')." o'quv markazi kurslar uchun ".$summa." so'm to'lov qabul qilindi va siz ".$chegirma." so'mlik chegirma oldingiz.";    
         }else{
-            $Text = "Hurmatli ".$Name." ".$Filial." o'quv markazi kurslar uchun ".$summa." so'm to'lov qabul qilindi.";    
+            $Text = "Hurmatli ".$Name." ".env('CRM_NAME')." o'quv markazi kurslar uchun ".$summa." so'm to'lov qabul qilindi.";    
         }
         $SmsCentar = SmsCentar::where('filial_id',$Users->filial_id)->first()->tulov;
-        Log::info("Payme Orqali SMS yuborish tekshirilmoqda.");
         if($SmsCentar=='on'){
             $eskiz_email = env('ESKIZ_UZ_EMAIL');
             $eskiz_password = env('ESKIZ_UZ_Password');

@@ -37,7 +37,8 @@ class UserPassUpdateSendMessege{
         $SmsCounter->save();
         SendMessege::create([
             'phone'=> $event->phone,
-            'text'=> strval($Text)
+            'text'=> strval($Text),
+            'status'=>'parol yangilandi'
         ]);
     }
 }

@@ -9,6 +9,7 @@ class SendMessege extends Model{
     use HasFactory;
     protected $fillable = [
         'phone',
-        'text'
+        'text',
+        'status'
     ];
 }

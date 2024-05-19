@@ -134,6 +134,7 @@ class PaymeController extends Controller{
                 return $response;
             }
             $transaction = Transaction::where('transaction',$id)->first();
+            Log::info($transaction);
             if($transaction){
                 if($transaction->state != 1){
                     $response = [
@@ -320,8 +321,9 @@ class PaymeController extends Controller{
             $transaction->perform_time = $this->microtime();
             $transaction->save();
             $user_id = $transaction->owner_id;
+            $filial_id = User::find($user_id)->filial_id;
             $Summa = $transaction->amount;
-            Payme::dispatch($user_id,$Summa);
+            Payme::dispatch($user_id,$Summa,$filial_id);
             $response = [
                 'result'=>[
                     'state'=>$transaction->state,
