@@ -756,9 +756,43 @@
         </div>
     </div>
 
-    <!--
-
-                            -->
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title w-100 text-center">Arxiv</h5>
+            <div class="table-responsive" style="font-size:12px;">
+                <table class="table table-bordered text-center table-hover">
+                    <thead>
+                        <tr>
+                            <th class="bg-primary text-white text-center">#</th>
+                            <th class="bg-primary text-white text-center">Vaqt</th>
+                            <th class="bg-primary text-white text-center">Izoh</th>
+                            <th class="bg-primary text-white text-center">Guruh</th>
+                            <th class="bg-primary text-white text-center">Meneger</th>
+                            <th class="bg-primary text-white text-center">Summa</th>
+                            <th class="bg-primary text-white text-center">Balans</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @forelse($Arxiv2 as $item)
+                        <tr>
+                            <td>{{ $loop->index+1 }}</td>
+                            <td>{{ $item['Data'] }}</td>
+                            <td style="text-align:left;">{{ $item['Type'] }}</td>
+                            <td style="text-align:left;">{{ $item['Status'] }}</td>
+                            <td>{{ $item['Meneger'] }}</td>
+                            <td>{{ $item['Summa'] }}</td>
+                            <td>{{ $item['Balans'] }}</td>
+                        </tr>
+                        @empty
+                            <tr>
+                                <td colspan=7 class="text-center">Eslatmalar mavjud emas.</td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
 </main>
 

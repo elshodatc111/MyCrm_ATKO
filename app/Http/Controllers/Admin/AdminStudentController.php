@@ -346,8 +346,7 @@ class AdminStudentController extends Controller{
             $eslat[$key]['created_at'] = $value->created_at;
         }
 
-        $Balans3 = User::find($id)->balans; // Balans2
-        /*
+        $Balans2 = User::find($id)->balans;
         $email = intval(User::find($id)->email);
         $Arxiv =  Http::get(env('ESKI_CRM_API_LINK').$email)->json();
         $Balans = 0;
@@ -378,9 +377,8 @@ class AdminStudentController extends Controller{
         if($Balans<0){
             $Balans = $Balans*(-1);
         }
-        $Balans3 = number_format($Balans2-$Balans, 0, '.', ' ');  // 'Arxiv2',
-        */
-        return view('Admin.user.show',compact('Balans3','eslat','FilialKassa','adminChegirma','Users','Guruhs','userHistory','Tulovlar','talaba_guruh','userArxivGuruh','ChegirmaGuruh'));
+        $Balans3 = number_format($Balans2-$Balans, 0, '.', ' '); 
+        return view('Admin.user.show',compact('Balans3','Arxiv2','eslat','FilialKassa','adminChegirma','Users','Guruhs','userHistory','Tulovlar','talaba_guruh','userArxivGuruh','ChegirmaGuruh'));
     }
     public function tulov(Request $request){ 
         $validate = $request->validate([
