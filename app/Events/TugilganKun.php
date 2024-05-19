@@ -12,9 +12,8 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class TugilganKun{
+class TugilganKun{ 
     use Dispatchable, InteractsWithSockets, SerializesModels;
-
     public $name;
     public $phone;
     public $filial;

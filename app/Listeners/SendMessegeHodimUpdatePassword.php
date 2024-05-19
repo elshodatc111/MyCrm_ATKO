@@ -1,5 +1,6 @@
 <?php
 namespace App\Listeners;
+use App\Models\SendMessege;
 use App\Models\SmsCounter;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -10,7 +11,7 @@ use mrmuminov\eskizuz\types\sms\SmsSingleSmsType;
 class SendMessegeHodimUpdatePassword{
     public function __construct(){}
     public function handle(HodimUpdatePasswor $event): void{
-        $Text = "Sizning yangi parolingiz\nParol:".$event->password;
+        $Text = "Sizning yangi parolingiz\nParol: ".$event->password;
         $eskiz_email = env('ESKIZ_UZ_EMAIL');
         $eskiz_password = env('ESKIZ_UZ_Password');
         $eskiz = new Eskiz($eskiz_email,$eskiz_password);
@@ -32,5 +33,9 @@ class SendMessegeHodimUpdatePassword{
         $SmsCounter->maxsms = $SmsCounter->maxsms - 1;
         $SmsCounter->counte = $SmsCounter->counte + 1;
         $SmsCounter->save();
+        SendMessege::create([
+            'phone'=> $event->phone,
+            'text'=> strval($Text)
+        ]);
     }
 }

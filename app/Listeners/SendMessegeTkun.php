@@ -4,6 +4,7 @@ namespace App\Listeners;
 use App\Events\TugilganKun;
 use App\Models\SmsCentar;
 use App\Models\SmsCounter;
+use App\Models\SendMessege;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use mrmuminov\eskizuz\Eskiz;
@@ -15,7 +16,7 @@ class SendMessegeTkun{
 
     public function handle(TugilganKun $event){
         if($event->type=='on'){
-            $Text = "Hurmatli ".$event->name."! Sizni tug'ilgan kuningiz bilan chin yurakdan tabriklaymiz! Ushbu quvonchli kunda va yilning har bir kunida sizga omad va sog'lik, istaklaringizni amalga oshirish va ko'plab ijobiy his-tuyg'ularni tilaymiz. \n Hurmat bilan ".$event->filial." o'quv markazi jamoasi.";
+            $Text = "Hurmatli ".$event->name." ! Sizni tug'ilgan kuningiz bilan chin yurakdan tabriklaymiz! Ushbu quvonchli kunda va yilning har bir kunida sizga omad va sog'lik, istaklaringizni amalga oshirish va ko'plab ijobiy his-tuyg'ularni tilaymiz. \n Hurmat bilan ".env('CRM_NAME')." o'quv markazi jamoasi.";
             $eskiz_email = env('ESKIZ_UZ_EMAIL');
             $eskiz_password = env('ESKIZ_UZ_Password');
             $eskiz = new Eskiz($eskiz_email,$eskiz_password);
@@ -37,6 +38,10 @@ class SendMessegeTkun{
             $SmsCounter->maxsms = $SmsCounter->maxsms - 1;
             $SmsCounter->counte = $SmsCounter->counte + 1;
             $SmsCounter->save();
+            SendMessege::create([
+                'phone'=> $event->phone,
+                'text'=> strval($Text)
+            ]);
         }
     }
 }

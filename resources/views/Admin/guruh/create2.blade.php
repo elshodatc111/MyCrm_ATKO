@@ -178,7 +178,7 @@
                             <input type="hidden" name="guruh_end" value="{{ $GuruhInput['guruh_end'] }}">
                             @foreach($GuruhView['kunlar'] as $key => $item)
                                 <input type="hidden" name="date{{$key}}" value="{{ $item }}">
-                            @endforeach
+                            @endforeach 
                             <script>
                                 function button(){
                                     document.getElementById("buttons").style.display = "none"

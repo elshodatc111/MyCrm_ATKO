@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 use App\Models\SmsCounter;
+use App\Models\SendMessege;
 use App\Events\UserResetPassword;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
@@ -10,10 +11,9 @@ use mrmuminov\eskizuz\types\sms\SmsSingleSmsType;
 
 class UserPassUpdateSendMessege{
     public function __construct(){}
-
     public function handle(UserResetPassword $event): void{
         $fio = $event->fio;
-        $Text = "Hurmatli ".$fio." Sizning yangi parolingiz\nParol:".$event->password;
+        $Text = "Hurmatli ".$fio." Sizning yangi parolingiz\nParol: ".$event->password;
         $eskiz_email = env('ESKIZ_UZ_EMAIL');
         $eskiz_password = env('ESKIZ_UZ_Password');
         $eskiz = new Eskiz($eskiz_email,$eskiz_password);
@@ -35,5 +35,9 @@ class UserPassUpdateSendMessege{
         $SmsCounter->maxsms = $SmsCounter->maxsms - 1;
         $SmsCounter->counte = $SmsCounter->counte + 1;
         $SmsCounter->save();
+        SendMessege::create([
+            'phone'=> $event->phone,
+            'text'=> strval($Text)
+        ]);
     }
 }

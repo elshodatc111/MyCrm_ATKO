@@ -4,12 +4,13 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use mrmuminov\eskizuz\Eskiz;
 use App\Models\SmsCounter;
+use App\Models\SendMessege;
 use mrmuminov\eskizuz\types\sms\SmsSingleSmsType;
 use App\Events\AdminCreateTecher;
 class SendMessegeCreatTecher{
     public function __construct(){}
     public function handle(AdminCreateTecher $event): void{
-        $text = $event->name." ".$event->filial." o'quv markazida o'qituvchi lavozimida ishga olindingiz.\nLogin: ".$event->login."\nParol: ".$event->password;
+        $text = $event->name." ".env('CRM_NAME')." o'quv markazida o'qituvchi lavozimida ishga olindingiz.\nLogin: ".$event->login."\nParol: ".$event->password."\nWebSayt: ".env('CRM_LINK');
         $eskiz_email = env('ESKIZ_UZ_EMAIL');
         $eskiz_password = env('ESKIZ_UZ_Password');
         $eskiz = new Eskiz($eskiz_email,$eskiz_password);
@@ -31,5 +32,9 @@ class SendMessegeCreatTecher{
         $SmsCounter->maxsms = $SmsCounter->maxsms - 1;
         $SmsCounter->counte = $SmsCounter->counte + 1;
         $SmsCounter->save();
+        SendMessege::create([
+            'phone'=> $event->phone,
+            'text'=> strval($text)
+        ]);
     }
 }

@@ -14,6 +14,8 @@ use App\Models\SmsCounter;
 use App\Models\Cours;
 use App\Models\GuruhTime;
 use App\Models\IshHaqi;
+use App\Models\SendMessege;
+use App\Models\Text;
 use App\Events\debitSendMessege;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -137,11 +139,11 @@ class AdminGuruhController extends Controller{
                     break;
                 case 8:
                     $Mavjud_vaqtlar['8']['text'] = '18:30-20:00';
-                    $Mavjud_vaqtlar['8']['id'] = 8;
+                    $Mavjud_vaqtlar['8']['id'] = 7;
                     break;
                 case 9:
                     $Mavjud_vaqtlar['9']['text'] = '20:00-21:30';
-                    $Mavjud_vaqtlar['9']['id'] = 9;
+                    $Mavjud_vaqtlar['9']['id'] = 7;
                     break;
             }
         }
@@ -267,7 +269,7 @@ class AdminGuruhController extends Controller{
         }
         return redirect()->route('AdminGuruhShow',$Guruh->id); 
     }
-    public function GuruhAbout($id){
+    public function GuruhAbout($id){ 
         $Guruhlar = Guruh::find($id);
         $Guruh = array();
         $Guruh['guruh_name'] = $Guruhlar->guruh_name;
@@ -502,11 +504,15 @@ class AdminGuruhController extends Controller{
             );
             $result = $eskiz->requestSmsSend($singleSmsType);
             $k++;
-
             $SmsCounter = SmsCounter::find(1);
             $SmsCounter->maxsms = $SmsCounter->maxsms - 1;
             $SmsCounter->counte = $SmsCounter->counte + 1;
             $SmsCounter->save();
+            
+            SendMessege::create([
+                'phone'=> $value,
+                'text'=> strval($Text)
+            ]);
         }
         return redirect()->back()->with('success', $k.' ta talabaga sms xabar yuborildi.');
     }

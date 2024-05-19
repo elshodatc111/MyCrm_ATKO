@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\User;
 use App\Models\Guruh;
 use App\Models\Eslatma;
+use App\Models\SendMessege;
 use App\Models\TulovDelete;
 use App\Models\SmsCounter;
 use App\Models\AdminKassa;
@@ -199,6 +200,10 @@ class AdminStudentController extends Controller{
         $SmsCounter->maxsms = $SmsCounter->maxsms - 1;
         $SmsCounter->counte = $SmsCounter->counte + 1;
         $SmsCounter->save();
+        SendMessege::create([
+            'phone'=> $phone,
+            'text'=> strval($Text)
+        ]);
         return redirect()->back()->with('success', 'SMS xabar yuborildi.'); 
     }
     public function Guruhs($id){

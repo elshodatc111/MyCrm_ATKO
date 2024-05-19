@@ -144,7 +144,7 @@ Route::controller(AdminGuruhController::class)->group(function () {
     Route::post('/Admin/guruh/updates', 'showUpdatestGuruh')->name('showUpdatestGuruh');
     Route::post('/Admin/guruh/delete', 'deletGuruh')->name('AdminGuruhDelete');
     Route::get('/Admin/guruh/show/{id}', 'show')->name('AdminGuruhShow');
-    Route::get('/Admin/guruh/end', 'endGuruh')->name('AdminGuruhEnd');
+    Route::get('/Admin/guruh/end', 'endGuruh')->name('AdminGuruhEnd'); 
     Route::get('/Admin/guruh/create', 'CreateGuruh')->name('AdminGuruhCreate');
     Route::post('/Admin/guruh/create1', 'CreateGuruh1')->name('AdminGuruhCreate1');
     Route::post('/Admin/guruh/create2', 'CreateGuruh2')->name('AdminGuruhCreate2');

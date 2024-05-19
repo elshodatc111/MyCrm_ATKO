@@ -1,7 +1,7 @@
 <?php
-
 namespace App\Listeners;
 use App\Models\User;
+use App\Models\SendMessege;
 use App\Models\SmsCounter;
 use App\Models\Filial;
 use App\Events\CreateHodim;
@@ -17,7 +17,7 @@ class NewHodimSendMessege{
         $User = User::find($event->user_id);
         $Filial_Name = Filial::where('id',$User->filial_id)->first()->filial_name;
         $Phone = "+998".str_replace(" ","",$User->phone);
-        $Text = $User->name." Siz ".$Filial_Name." o'quv markazimizga ishga olindingiz.\nLogin: ".$User->email."\nParol: 12345678";
+        $Text = $User->name." Siz ".env('CRM_NAME')." o'quv markazimizga ishga olindingiz.\nLogin: ".$User->email."\nParol: 12345678\nWeb sayt ".env('CRM_LINK');
         $eskiz_email = env('ESKIZ_UZ_EMAIL');
         $eskiz_password = env('ESKIZ_UZ_Password');
         $eskiz = new Eskiz($eskiz_email,$eskiz_password);
@@ -39,5 +39,9 @@ class NewHodimSendMessege{
         $SmsCounter->maxsms = $SmsCounter->maxsms - 1;
         $SmsCounter->counte = $SmsCounter->counte + 1;
         $SmsCounter->save();
+        SendMessege::create([
+            'phone'=> $Phone,
+            'text'=> strval($Text)
+        ]);
     }
 }

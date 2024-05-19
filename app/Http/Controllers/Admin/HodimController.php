@@ -40,7 +40,7 @@ class HodimController extends Controller{
         $validate['password'] = Hash::make($parol);
         $validate['filial_id'] = request()->cookie('filial_id');
         $User = User::create($validate);
-        CreateHodim::dispatch($User->id);
+        CreateHodim::dispatch($User->id); 
         return redirect()->back()->with('success', 'Yangi hodim qo\'shildi.'); 
     }
     public function adminHodimDelete($id){
