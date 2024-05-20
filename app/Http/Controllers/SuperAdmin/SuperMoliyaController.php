@@ -65,10 +65,12 @@ class SuperMoliyaController extends Controller{
         $filial_id = $request->filial_id;
         $filial_id2 = $request->filial_id2;
         $Filial = Filial::find($filial_id);
-        $FilialKassa = FilialKassa::where('filial_id',$filial_id)->first();
         $summa = str_replace(",","",$request->summa);
+
         $type = $request->type;
+
         $MavjudIshHaqi = MavjudIshHaqi::where('filial_id',$filial_id2)->first();
+
         if($type=='Naqt'){
             $Mavjud = $Filial->naqt;
             if($summa>$Mavjud){
@@ -77,8 +79,6 @@ class SuperMoliyaController extends Controller{
             $MavjudIshHaqi->naqt = $MavjudIshHaqi->naqt + $summa;
             $Filial->naqt = $Filial->naqt - $summa;
             $Filial->xarajat_naqt = $Filial->xarajat_naqt + $summa;
-            $FilialKassa->tulov_naqt = $FilialKassa->tulov_naqt + $summa;
-            $FilialKassa->tulov_naqt_chiqim_tasdiqlandi = $FilialKassa->tulov_naqt_chiqim_tasdiqlandi - $summa;
         }elseif ($type=='Plastik') {
              $Mavkud = $Filial->plastik; 
              if($Mavkud<$summa){
@@ -87,12 +87,9 @@ class SuperMoliyaController extends Controller{
              $MavjudIshHaqi->plastik = $MavjudIshHaqi->plastik + $summa;
              $Filial->plastik = $Filial->plastik - $summa;
              $Filial->xarajat_plastik = $Filial->xarajat_plastik + $summa;
-             $FilialKassa->tulov_plastik = $FilialKassa->tulov_plastik + $summa;
-             $FilialKassa->tulov_plastik_chiqim_tasdiqlandi = $FilialKassa->tulov_plastik_chiqim_tasdiqlandi - $summa;
         }
         $MavjudIshHaqi->save();
         $Filial->save();
-        $FilialKassa->save();
         Moliya::create([
             'filial_id'=>$filial_id,
             'xodisa'=>"Qaytarildi",

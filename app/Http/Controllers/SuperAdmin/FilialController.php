@@ -130,9 +130,7 @@ class FilialController extends Controller{
         $Cours = Cours::where('filial_id',$id)->where('created_at','!=',null)->get();
         $SmsCentar = SmsCentar::where('filial_id',$id)->first();
         $ChegirmaDay = ChegirmaDay::where('filial_id',$id)->first()->days;
-        
         return view('SuperAdmin.filialshow',compact('ChegirmaDay','Filial','SmsCentar','Room','TulovSetting','Cours'));
-    
     }
     public function filialCoursDelete($id){
         $Cours = Cours::find($id);
@@ -185,7 +183,6 @@ class FilialController extends Controller{
     }
     public function filialDelete(Request $request){
         $filial_id = $request->id;
-
         $User = User::where('filial_id',$filial_id)->where('type','!=','SuperAdmin')->get();
         foreach ($User as $key => $value) {$value->delete();}
 
