@@ -40,7 +40,8 @@ class SendMessegeTkun{
             $SmsCounter->save();
             SendMessege::create([
                 'phone'=> $event->phone,
-                'text'=> strval($Text)
+                'text'=> strval($Text),
+                'status'=>"Yuborildi"
             ]);
         }
     }

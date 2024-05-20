@@ -155,7 +155,8 @@ class UserTulov{
             $SmsCounter->save();
             SendMessege::create([
                 'phone'=> $phone,
-                'text'=> strval($text)
+                'text'=> strval($text),
+                'status'=>"Yuborildi"
             ]);
         }
         if(Auth::user()->type!='SuperAdmin'){

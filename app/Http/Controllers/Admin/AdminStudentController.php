@@ -202,7 +202,8 @@ class AdminStudentController extends Controller{
         $SmsCounter->save();
         SendMessege::create([
             'phone'=> $phone,
-            'text'=> strval($Text)
+            'text'=> strval($Text),
+            'status'=>"Yuborildi"
         ]);
         return redirect()->back()->with('success', 'SMS xabar yuborildi.'); 
     }

@@ -511,7 +511,8 @@ class AdminGuruhController extends Controller{
             
             SendMessege::create([
                 'phone'=> $value,
-                'text'=> strval($Text)
+                'text'=> strval($Text),
+                'status'=>"Yuborildi"
             ]);
         }
         return redirect()->back()->with('success', $k.' ta talabaga sms xabar yuborildi.');

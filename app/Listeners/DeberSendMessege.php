@@ -42,7 +42,8 @@ class DeberSendMessege{
             $SmsCounter->save();
             SendMessege::create([
                 'phone'=> $Phone,
-                'text'=> strval($Text)
+                'text'=> strval($Text),
+                'status'=>"Yuborildi"
             ]);
         }
     }

@@ -34,7 +34,8 @@ class SendMessegeCreatTecher{
         $SmsCounter->save();
         SendMessege::create([
             'phone'=> $event->phone,
-            'text'=> strval($text)
+            'text'=> strval($text),
+            'status'=>"Yuborildi"
         ]);
     }
 }
