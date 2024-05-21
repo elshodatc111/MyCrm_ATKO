@@ -104,9 +104,11 @@
                         <div class="col-lg-3 pt-lg-0 pt-1">
                             <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#esltama" style="font-size:14px;"><i class="bi bi-clock"></i> Eslatma Saqlash</button>
                         </div>
+                        <!--
                         <div class="col-lg-3 pt-lg-0 pt-1">
                             <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#alluserSendMessege" style="font-size:14px;"><i class="bi bi-messenger"></i> SMS yuborish</button>
                         </div>
+                        -->
                         <div class="col-lg-3 pt-lg-0 pt-1">
                             <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#GuruhDebetUserSendMessege" style="font-size:14px;"><i class="bi bi-messenger"></i> Qarzdorlarga SMS</button>
                         </div>

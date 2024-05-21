@@ -20,6 +20,7 @@
             <div class="alert alert-danger">{{Session::get('error') }}</div>
         @endif
         <div class="row">
+            <!--
             <div class="col-lg-6">
                 <div class="card">
                     <div class="card-body text-center">
@@ -33,6 +34,7 @@
                     </div>
                 </div>
             </div>
+            -->
             <div class="col-lg-6">
                 <div class="card">
                     <div class="card-body text-center">
