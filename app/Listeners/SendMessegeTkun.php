@@ -16,7 +16,7 @@ class SendMessegeTkun{
 
     public function handle(TugilganKun $event){
         if($event->type=='on'){
-            $Text = "Hurmatli ".$event->name." ! Sizni tug'ilgan kuningiz bilan chin yurakdan tabriklaymiz! Ushbu quvonchli kunda va yilning har bir kunida sizga omad va sog'lik, istaklaringizni amalga oshirish va ko'plab ijobiy his-tuyg'ularni tilaymiz. \n Hurmat bilan ".env('CRM_NAME')." o'quv markazi jamoasi.";
+            $Text = "Hurmatli ".$event->name." Sizni tug'ilgan kuningiz bilan chin yurakdan tabriklaymiz! Ushbu quvonchli kunda va yilning har bir kunida sizga omad va sog'lik, istaklaringizni amalga oshirish va ko'plab ijobiy his-tuyg'ularni tilaymiz. Hurmat bilan ".env('CRM_NAME')." o'quv markazi jamoasi.";
             $eskiz_email = env('ESKIZ_UZ_EMAIL');
             $eskiz_password = env('ESKIZ_UZ_Password');
             $eskiz = new Eskiz($eskiz_email,$eskiz_password);

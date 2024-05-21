@@ -11,7 +11,7 @@ use mrmuminov\eskizuz\types\sms\SmsSingleSmsType;
 class SendMessegeHodimUpdatePassword{
     public function __construct(){}
     public function handle(HodimUpdatePasswor $event): void{
-        $Text = "Sizning yangi parolingiz\nParol: ".$event->password;
+        $Text = "Sizning yangi parolingiz Parol: ".$event->password." https://crm.atko.tech/";
         $eskiz_email = env('ESKIZ_UZ_EMAIL');
         $eskiz_password = env('ESKIZ_UZ_Password');
         $eskiz = new Eskiz($eskiz_email,$eskiz_password);

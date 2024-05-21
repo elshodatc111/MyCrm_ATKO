@@ -19,7 +19,7 @@ class CreateTashrifSendMessege{
         $User = User::find($event->user_id);
         $Filial_Name = Filial::where('id',$User->filial_id)->first()->filial_name;
         $Phone = "+998".str_replace(" ","",$User->phone);
-        $Text = "Hurmatli ".$User->name."!\nSiz ".env('CRM_NAME')." o'quv markazimizga ro'yhatga olindingiz.\nLogin: ".$User->email."\nParol: ".$event->password."\nwebsayt: ".env('CRM_LINK');
+        $Text = "Hurmatli ".$User->name." Siz ".env('CRM_NAME')." o'quv markazimizga ro'yhatga olindingiz.\nLogin: ".$User->email." \nParol: ".$event->password."\nwebsayt: ".env('CRM_LINK');
         $eskiz_email = env('ESKIZ_UZ_EMAIL');
         $eskiz_password = env('ESKIZ_UZ_Password');
         $SmsCentar = SmsCentar::where('filial_id',$User->filial_id)->first()->tashrif;
