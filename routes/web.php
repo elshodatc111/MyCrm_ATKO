@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OnlineController;
 use App\Http\Controllers\SuperAdmin\SuperAdminController;
 use App\Http\Controllers\SuperAdmin\KabinetController;
 use App\Http\Controllers\SuperAdmin\HodimlarController;
@@ -33,6 +34,9 @@ Route::get('/', [HomeController::class, 'index']);
 Auth::routes();
  
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/online', [OnlineController::class, 'index'])->name('online');
+Route::get('/online/update/{id}', [OnlineController::class, 'update'])->name('online_update');
+Route::post('/online/update/{id}', [OnlineController::class, 'update_story'])->name('online_update');
 
 Route::controller(SettingController::class)->group(function () {
     Route::get('/setting', 'index')->name('setting');

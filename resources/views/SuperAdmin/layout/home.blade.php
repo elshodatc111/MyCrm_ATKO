@@ -100,6 +100,9 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{ route('sms') }}"><i class="bi bi-envelope-arrow-up-fill"></i><span>SMS</span></a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{ route('online') }}"><i class="bi bi-award"></i><span>Online kurslar</span></a>
+      </li>
       @if(Auth::user()->email=='elshodatc1116')
       <li class="nav-item">
         <a class="nav-link collapsed" href="{{ route('setting') }}"><i class="bi bi-gear"></i><span>Settings</span></a>
