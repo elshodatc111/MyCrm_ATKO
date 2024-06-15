@@ -51,7 +51,7 @@ class FilialController extends Controller{
             $Filial[$key]['plastik'] = number_format(($value->plastik), 0, '.', ' ');
             $Plastik = $Plastik + $value->plastik;
             $Filial[$key]['payme'] = number_format(($value->payme), 0, '.', ' ');
-            $Payme = $Payme + $value->payme;
+            $Payme = $Payme + $value->payme; 
         } 
         $Jami = $Payme+$Plastik+$Naqt;
         $Naqt = number_format(($Naqt), 0, '.', ' ');

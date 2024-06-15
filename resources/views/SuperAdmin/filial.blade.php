@@ -225,6 +225,8 @@
                     Filial kassasidan kirim.
                   @elseif($item['xodisa']=='Qaytarildi')
                     Ish haqi uchun kassaga qaytarildi.
+                  @elseif($item['xodisa']=='Xarajat')
+                    Kassadan xarajat.
                   @elseif($item['xodisa']=='XarajatAdmin')
                     Xarajat uchun chiqim qilindi.
                   @endif
