@@ -213,10 +213,10 @@
                             <th class="bg-primary text-white">Boshlanish vaqti</th>
                             <th class="bg-primary text-white">Tugash vaqti</th>
                             <th class="bg-primary text-white">Talabalar</th>
-                            <th class="bg-primary text-white">Talaba o'chirildi</th>
                             <th class="bg-primary text-white">Bonus</th>
                             <th class="bg-primary text-white">Davomad</th>
-                            <th class="bg-primary text-white">Ish haqi</th>
+                            <th class="bg-primary text-white">Ish haqi(Umumiy)</th>
+                            <th class="bg-primary text-white">Ish haqi(Xisoblandi)</th>
                             <th class="bg-primary text-white">To'langan</th>
                         </tr>
                     </thead>
@@ -228,9 +228,9 @@
                             <td>{{ $item['guruh_start'] }}</td>
                             <td>{{ $item['guruh_end'] }}</td>
                             <td>{{ $item['Users'] }}</td>
-                            <td>{{ $item['delete'] }}</td>
                             <td>{{ $item['Bonus'] }}</td>
                             <td>{{ $item['Davomat'] }}</td>
+                            <td>{{ $item['AllTulov'] }}</td>
                             <td style="text-align:right">{{ $item['Hisoblandi'] }}</td>
                             <td style="text-align:right">{{ $item['Tulov'] }}</td>
                         </tr>

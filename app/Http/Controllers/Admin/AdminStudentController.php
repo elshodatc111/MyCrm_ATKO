@@ -375,10 +375,7 @@ class AdminStudentController extends Controller{
             $Arxiv2[$key]['Summa'] = number_format($rowax['Summa'], 0, '.', ' ');
             $Arxiv2[$key]['Balans'] = number_format($Balans, 0, '.', ' ');
         }
-        if($Balans<0){
-            $Balans = $Balans*(-1);
-        }
-        $Balans3 = number_format($Balans2-$Balans, 0, '.', ' '); 
+        $Balans3 = number_format($Balans2+$Balans, 0, '.', ' '); 
         return view('Admin.user.show',compact('Balans3','Arxiv2','eslat','FilialKassa','adminChegirma','Users','Guruhs','userHistory','Tulovlar','talaba_guruh','userArxivGuruh','ChegirmaGuruh'));
     }
     public function tulov(Request $request){ 
