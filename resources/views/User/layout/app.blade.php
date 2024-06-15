@@ -103,11 +103,9 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('Tolovlar') }}"><i class="bi bi-coin"></i><span>To'lovlar</span></a>
             </li>
-            <!--
             <li class="nav-item">
-                <a class="nav-link collapsed" href="https://atko.uz/"><i class="bi bi-chat-dots"></i><span>Online kurslar</span></a>
+                <a class="nav-link collapsed" href="{{ route('user_online') }}"><i class="bi bi-badge-hd"></i><span>Online kurslar</span></a>
             </li>
-            -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('Contact') }}"><i class="bi bi-chat-dots"></i><span>Bog'lanish</span></a>
             </li>
@@ -249,5 +247,20 @@
         });
     })(jQuery);
   </script>
+  <script>
+        $(function(){
+            $('#myvideo').bind('contextmenu',function(){return false;});
+        });
+        $(function(){
+            $('#body').bind('contextmenu',function(){return false;});
+        });
+        document.addEventListener('contextmenu', event => event.preventDefault());
+        document.onkeydown = function (e) {
+            if(e.keyCode == 123) {return false;}
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 73){return false;}
+            if(e.ctrlKey && e.shiftKey && e.keyCode == 74) {return false;}
+            if(e.ctrlKey && e.keyCode == 85) {return false;}
+        }
+    </script>
 </body>
 </html>

@@ -28,6 +28,7 @@ use App\Http\Controllers\User\UserGuruhController;
 use App\Http\Controllers\User\UserPaymartController;
 use App\Http\Controllers\User\UserContactController;
 use App\Http\Controllers\User\PaymeController; 
+use App\Http\Controllers\User\OnlineCoursController; 
 use App\Http\Controllers\SettingController; 
 Route::get('/', [HomeController::class, 'index']);
 
@@ -37,6 +38,11 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/online', [OnlineController::class, 'index'])->name('online');
 Route::get('/online/update/{id}', [OnlineController::class, 'update'])->name('online_update');
 Route::post('/online/update/{id}', [OnlineController::class, 'update_story'])->name('online_update');
+
+
+Route::get('/user_online', [OnlineCoursController::class, 'index'])->name('user_online');
+Route::get('/user_online/show/{id}', [OnlineCoursController::class, 'show'])->name('user_online_show');
+Route::get('/user_online/lessen/{mavzu_id}', [OnlineCoursController::class, 'lessen'])->name('user_online_lessen');
 
 Route::controller(SettingController::class)->group(function () {
     Route::get('/setting', 'index')->name('setting');
