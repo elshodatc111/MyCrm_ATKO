@@ -33,6 +33,12 @@
         <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
                 <li class="nav-item">
+                    <a class="nav-link nav-icon" href="{{ route('blogs') }}" title="Ro'yhatdan o'tganlar">
+                        <i class="bi bi-headset"></i>
+                        <span class="badge bg-primary badge-number">@include('Admin.layout.blog')</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link nav-icon" href="{{ route('AdminTKun') }}" title="Tug'ilgan kunlar">
                         <i class="bi bi-cake2-fill"></i>
                         <span class="badge bg-warning badge-number">@include('Admin.layout.tkun')</span>

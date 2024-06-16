@@ -16,6 +16,7 @@ use App\Http\Controllers\SuperAdmin\SuperElonController;
 use App\Http\Controllers\SuperAdmin\SuperAdminTecherController;
 use App\Http\Controllers\SuperAdmin\ReportControlle;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\HodimController;
 use App\Http\Controllers\Admin\AdminGuruhController;
 use App\Http\Controllers\Admin\AdminTecherController;
@@ -38,6 +39,18 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/online', [OnlineController::class, 'index'])->name('online');
 Route::get('/online/update/{id}', [OnlineController::class, 'update'])->name('online_update');
 Route::post('/online/update/{id}', [OnlineController::class, 'update_story'])->name('online_update');
+
+
+Route::get('/blog/create/user', [BlogController::class, 'createBlog'])->name('create_blog');
+Route::post('/blog/create/user', [BlogController::class, 'createBlogStory'])->name('create_blog_story');
+
+Route::get('/blog', [BlogController::class, 'newBlog'])->name('blogs');
+Route::get('/blog/show/{id}', [BlogController::class, 'newBlogshow'])->name('blogsshow');
+Route::post('/blog/updates', [BlogController::class, 'newBlogupdate'])->name('newBlogupdate');
+Route::get('/blog/reg', [BlogController::class, 'regBlog'])->name('regBlog');
+Route::get('/blog/arxiv', [BlogController::class, 'arxivBlog'])->name('arxivBlog');
+Route::get('/blog/arxiv/{id}', [BlogController::class, 'arxivBlogshow'])->name('arxivBlogshow');
+Route::get('/blog/delete', [BlogController::class, 'deleteBlog'])->name('deleteBlog');
 
 
 Route::get('/user_online', [OnlineCoursController::class, 'index'])->name('user_online');
