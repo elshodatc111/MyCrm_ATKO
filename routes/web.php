@@ -110,6 +110,7 @@ Route::controller(SuperStatistikaController::class)->group(function () {
     Route::get('/Superadmin/statistika/month', 'statistikaMonth')->name('statistikaMonth');
     Route::get('/Superadmin/statistika/{id}', 'index')->name('SuperAdminStatistika');
     Route::get('/Superadmin/statistika/kun/{id}', 'statistikaKun')->name('statistikaKun');
+    Route::get('/Superadmin/form', 'statistikaForm')->name('statistikaForm');
 });
 
 Route::controller(SuperElonController::class)->group(function () {

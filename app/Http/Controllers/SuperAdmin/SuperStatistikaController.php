@@ -7,6 +7,7 @@ use App\Models\GuruhUser;
 use App\Models\Tulov;
 use App\Models\IshHaqi;
 use App\Models\Guruh;
+use App\Models\Blog;
 use App\Models\Moliya;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -311,7 +312,6 @@ class SuperStatistikaController extends Controller{
         $Yillik = $this->YillikStatistikaFilial($filial_id);
         return view('SuperAdmin.statistik.index',compact('Yillik','filial_id','Tashriflar','Active','OylikTulovAll'));
     }
-
     public function AllTashriflar(){
         $Oylar = $this->OxirgiYittiOy();
         $Tashriflar = array();
@@ -473,5 +473,61 @@ class SuperStatistikaController extends Controller{
         $TashSMM = $this->KunlikTashrivAndCRM($filial_id); 
         $Tulov = $this->KunlikTulovlar($filial_id); 
         return view('SuperAdmin.statistik.kunlik',compact('Tulov','TashSMM','filial_id'));
+    }
+    public function statistikaForm(){
+        $now = date("Y-m-d")." 23:59:59";
+        $monch = date('Y-m-d', strtotime('-30 days', time()))." 00:00:00";
+        $years = date('Y-m-d', strtotime('-365 days', time()))." 00:00:00";
+        $Monch = array();
+        $Blog = Blog::get();
+        $FormY = 0;
+        $RegY = 0;
+        $GurY = 0;
+        $TulY = 0;
+        $FormO = 0;
+        $RegO = 0;
+        $GurO = 0;
+        $TulO = 0;
+        foreach ($Blog as $key => $value) {
+            if($value['created_at']>=$monch){
+                $FormO = $FormO + 1;
+                if($value['status']=='register'){
+                    $RegO = $RegO + 1;
+                    $User_id = $value['user_id'];
+                    $GuruhUsers = count(GuruhUser::where('user_id',$User_id)->where('status','true')->get());
+                    if($GuruhUsers>0){
+                        $GurO = $GurO + 1;
+                    }
+                    $Tulovlar = count(Tulov::where('user_id',$User_id)->get());
+                    if($Tulovlar>0){
+                        $TulO = $TulO +1;
+                    }
+                }
+            }
+            if($value['created_at']>=$years){
+                $FormY = $FormY + 1;
+                if($value['status']=='register'){
+                    $RegY = $RegY + 1;
+                    $User_id = $value['user_id'];
+                    $GuruhUsers = count(GuruhUser::where('user_id',$User_id)->where('status','true')->get());
+                    if($GuruhUsers>0){
+                        $GurY = $GurY + 1;
+                    }
+                    $Tulovlar = count(Tulov::where('user_id',$User_id)->get());
+                    if($Tulovlar>0){
+                        $TulY = $TulY +1;
+                    }
+                }
+            }
+        }
+        $Monch['FormY'] = $FormY;
+        $Monch['RegY'] = $RegY;
+        $Monch['GurY'] = $GurY;
+        $Monch['TulY'] = $TulY;
+        $Monch['FormO'] = $FormO;
+        $Monch['RegO'] = $RegO;
+        $Monch['GurO'] = $GurO;
+        $Monch['TulO'] = $TulO;
+        return view('SuperAdmin.statistik.form_statistik',compact('Monch'));
     }
 }
