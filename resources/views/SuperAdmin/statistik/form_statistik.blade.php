@@ -37,6 +37,15 @@
                 </div>
             </div>
         </div>
+        <div class="card card-body">
+            <h2 class="text-center card-title w-100">Reklama uchun link:</h2>
+            <ul>
+                <li><b>Telegram: </b> <a href="https://crm-atko.uz/blog/create/user/Telegram"><i>https://crm-atko.uz/blog/create/user/Telegram</i></a></li>
+                <li><b>Instagram: </b> <a href="https://crm-atko.uz/blog/create/user/Instagram"><i>https://crm-atko.uz/blog/create/user/Instagram</i></a></li>
+                <li><b>Facebook: </b> <a href="https://crm-atko.uz/blog/create/user/Facebook"><i>https://crm-atko.uz/blog/create/user/Facebook</i></a></li>
+                <li><b>Youtube: </b> <a href="https://crm-atko.uz/blog/create/user/Facebook"><i>https://crm-atko.uz/blog/create/user/Youtube</i></a></li>
+            </ul>
+        </div>
     </section>
 </main>
 <script>

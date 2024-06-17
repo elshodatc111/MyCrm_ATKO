@@ -41,7 +41,7 @@ Route::get('/online/update/{id}', [OnlineController::class, 'update'])->name('on
 Route::post('/online/update/{id}', [OnlineController::class, 'update_story'])->name('online_update');
 
 
-Route::get('/blog/create/user', [BlogController::class, 'createBlog'])->name('create_blog');
+Route::get('/blog/create/user/{smm}', [BlogController::class, 'createBlog'])->name('create_blog');
 Route::post('/blog/create/user', [BlogController::class, 'createBlogStory'])->name('create_blog_story');
 
 Route::get('/blog', [BlogController::class, 'newBlog'])->name('blogs');

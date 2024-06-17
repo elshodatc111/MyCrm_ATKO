@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class BlogController extends Controller{
-    public function createBlog(){
-        return view('Admin.blog.users.index');
+    public function createBlog($smm){
+        return view('Admin.blog.users.index',compact('smm'));
     }
     public function createBlogStory(Request $request){
         $validate = $request->validate([

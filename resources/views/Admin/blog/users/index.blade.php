@@ -9,12 +9,12 @@
     <title>ATKO o'quv markazi</title>
     <link href="https://atko.tech/NiceAdmin/assets/img/logo.png" rel="icon">
     <link href="https://atko.tech/NiceAdmin/assets/img/logo.png" rel="apple-touch-icon">
-    <link href="./../../vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-    <link href="./../../vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="./../../../vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="./../../../vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
-    <link href="./../../vendor/select2/select2.min.css" rel="stylesheet" media="all">
-    <link href="./../../vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
-    <link href="./../../css/main.css" rel="stylesheet" media="all">
+    <link href="./../../../vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="./../../../vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+    <link href="./../../../css/main.css" rel="stylesheet" media="all">
 </head>
 
 <body>
@@ -82,20 +82,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="input-group">
-                            <div class="rs-select2 js-select-simple select--no-search">
-                                <select name="smm" required>
-                                    <option value="">Biz haqimzida</option>
-                                    <option value="Telegram">Telegram</option>
-                                    <option value="Instagram">Instagram</option>
-                                    <option value="Facebook">Facebook</option>
-                                    <option value="Bannerlar">Bannerlar</option>
-                                    <option value="Tanishlar">Tanishlar</option>
-                                    <option value="Boshqa">Boshqa</option>
-                                </select>
-                                <div class="select-dropdown"></div>
-                            </div>
-                        </div>
+                        <input type="hidden" name="smm" value="{{ $smm }}">
                         <div class="p-t-20">
                             <button class="btn btn--radius btn--green" type="submit">Ro'yxatdan o'tish</button>
                         </div>
@@ -105,11 +92,11 @@
         </div>
     </div>
 
-    <script src="./../../vendor/jquery/jquery.min.js"></script>
-    <script src="./../../vendor/select2/select2.min.js"></script>
-    <script src="./../../vendor/datepicker/moment.min.js"></script>
-    <script src="./../../vendor/datepicker/daterangepicker.js"></script>
-    <script src="./../../js/global.js"></script>
+    <script src="./../../../vendor/jquery/jquery.min.js"></script>
+    <script src="./../../../vendor/select2/select2.min.js"></script>
+    <script src="./../../../vendor/datepicker/moment.min.js"></script>
+    <script src="./../../../vendor/datepicker/daterangepicker.js"></script>
+    <script src="./../../../js/global.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.7/jquery.inputmask.min.js"></script>
     <script>
