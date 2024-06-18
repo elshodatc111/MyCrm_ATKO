@@ -291,8 +291,12 @@
     </div>  
     
 </section>
+@if($Techer['status'] =='true')
 <div class="w-100 text-center"><a href="{{ route('AdminTecherDelete',$Techer['id']) }}" class="btn btn-danger w-50"><i class="bi bi-trash"></i> O'qituvchini o'chirish </a></div>
+@else
+<div class="w-100 text-center"><a href="{{ route('AdminTecherResset',$Techer['id']) }}" class="btn btn-primary w-50"><i class="bi bi-check"></i> O'qituvchini Qayta tiklash </a></div>
 
+@endif
 </main>
 
 @endsection

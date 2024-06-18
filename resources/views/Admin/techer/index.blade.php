@@ -97,6 +97,7 @@
                     </tbody>
                 </table>
             </div>
+            <a href="{{route('AdminTecher2')}}" class="btn btn-primary">Arxiv o'qituvchilar</a>
         </div>
     </div> 
 </section>

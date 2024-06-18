@@ -188,6 +188,7 @@ Route::controller(AdminGuruhController::class)->group(function () {
 
 Route::controller(AdminTecherController::class)->group(function () {
     Route::get('/Admin/admin/techer', 'index')->name('AdminTecher');
+    Route::get('/Admin/admin/techer/history', 'index2')->name('AdminTecher2');
     Route::post('/Admin/admin/techer', 'techerCreate')->name('AdminTecherCreate');
     Route::post('/Admin/admin/techer/update', 'techerUpdate')->name('AdminTecherUpdate');
     Route::post('/Admin/admin/techer/pay', 'TecherPay')->name('AdminTecherPay');
@@ -195,6 +196,7 @@ Route::controller(AdminTecherController::class)->group(function () {
     Route::post('/Admin/admin/techer/update/password', 'techerUpdatePassword')->name('AdminTecherUpdatePassword');
     Route::get('/Admin/admin/techer/show/{id}', 'techerShow')->name('AdminTecherShow');
     Route::get('/Admin/admin/techer/delete/{id}', 'techerDelete')->name('AdminTecherDelete');
+    Route::get('/Admin/admin/techer/reset/{id}', 'techerReset')->name('AdminTecherResset');
 });
 
 Route::controller(AdminKabinetController::class)->group(function () {

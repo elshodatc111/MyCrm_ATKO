@@ -23,8 +23,11 @@ class AdminTecherController extends Controller{
     }
     public function index(){
         $Techers = User::where('filial_id',request()->cookie('filial_id'))->where('type','Techer')->where('status','true')->get();
-
         return view('Admin.techer.index',compact('Techers'));
+    }
+    public function index2(){
+        $Techers = User::where('filial_id',request()->cookie('filial_id'))->where('type','Techer')->where('status','false')->get();
+        return view('Admin.techer.index2',compact('Techers'));
     }
     public function techerCreate(Request $request){
         $validate = $request->validate([
@@ -145,6 +148,12 @@ class AdminTecherController extends Controller{
         $Techer->status = 'false';
         $Techer->save();
         return redirect()->route('AdminTecher')->with('success', 'O\'qituvchi O\'chirildi.'); 
+    }
+    public function techerReset($id){
+        $Techer = User::find($id);
+        $Techer->status = 'true';
+        $Techer->save();
+        return redirect()->route('AdminTecher')->with('success', 'O\'qituvchi qaytadan tiklandi.'); 
     }
     public function techerUpdate(Request $request){
         $validate = $request->validate([
